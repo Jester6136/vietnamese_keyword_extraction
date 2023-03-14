@@ -1,14 +1,14 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from configparser import ConfigParser
-from src.main import extractor
+from src.main import Extractor
 app = FastAPI()
 
 
 config = ConfigParser()
 config.read('config.ini')
 config_default = config['DEFAULT']
-Extractor = extractor(config_default)
+extractor = Extractor(config_default)
 
 origins = ["*"]
 
@@ -22,4 +22,4 @@ app.add_middleware(
 
 @app.get("/extracting")
 async def extracting(document:str,num_keywords:int):
-    return {"keywords": Extractor.run(document,num_keywords)}
+    return {"keywords": extractor.run(document,num_keywords)}

@@ -4,7 +4,7 @@ import py_vncorenlp
 from configparser import ConfigParser
 
 
-class extractor():
+class Extractor():
     def __init__(self,config):
         self.stopwords = get_stopword(config['stopwords_path'])
         self.annotator = py_vncorenlp.VnCoreNLP(annotators=["pos"], save_dir=config['vncore_path'])
@@ -23,26 +23,17 @@ class extractor():
                 weight = 1  # Assign a weight of 1 to lowercase tokens
             tf[token] = tf.get(token, 0) + weight * position_weights[i]
 
-        # Calculate IDF and TF-IDF
-        idf = {}
-        for token in set(tokens):
-            idf[token] = 1  # Set IDF to 1 for simplicity
-        tfidf = {}
-        for token, freq in tf.items():
-            tfidf[token] = freq * idf[token]
-
         # Get top keywords
-        final_sim = sorted(tfidf.items(), key=lambda x:x[1], reverse=True)
-        top_keywords = list(dict(final_sim[:num_keywords]).keys())
+        sorter = sorted(tf.items(), key=lambda x:x[1], reverse=True)
+        top_keywords = list(dict(sorter[:num_keywords]).keys())
         return top_keywords
 
 if __name__=='__main__':
-
     config = ConfigParser()
     config.read('config.ini')
     config_default = config['DEFAULT']
-    extractor1 = extractor(config_default)
-    keywords = extractor1.run("""Năm trung tâm đăng kiểm ở Hà Nội được mở cửa trở lại từ sáng 13/3 sau thời gian tạm đóng, nâng tổng số đơn vị hoạt động lên 13.
+    extractor = Extractor(config_default)
+    keywords = extractor.run("""Năm trung tâm đăng kiểm ở Hà Nội được mở cửa trở lại từ sáng 13/3 sau thời gian tạm đóng, nâng tổng số đơn vị hoạt động lên 13.
 
     Đó là trung tâm 2903V phường Láng Thượng, quận Cầu Giấy; 2907D ở Du Nội, Đông Anh; 2011D ở Đông Sơn, Chương Mỹ; 2917D phường Thạch Bàn, Long Biên; và 2918D ở thị xã Sơn Tây.
 

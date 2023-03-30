@@ -1,16 +1,26 @@
-from utils.preprocessing import get_stopword,preprocessing
+from utils.utils import get_stopword,preprocessing_vi,preprocessing_en,postprocessing
 import math
 import py_vncorenlp
 from configparser import ConfigParser
-
+import spacy
+import logging
 
 class Extractor():
-    def __init__(self,config):
-        self.stopwords = get_stopword(config['stopwords_path'])
-        self.annotator = py_vncorenlp.VnCoreNLP(annotators=["pos"], save_dir=config['vncore_path'])
+    def __init__(self,config,lang):
+        self.lang=lang
+        if self.lang =='vi':
+            self.stopwords = get_stopword(config['stopwords_path'])
+            self.annotator = py_vncorenlp.VnCoreNLP(annotators=["pos"], save_dir=config['vncore_path'])
+        elif self.lang =='en':
+            self.annotator = spacy.load("en_core_web_sm")
+        else:
+            logging.exception("This language don't supporting now!")
 
     def run(self,document,num_keywords):
-        tokens = preprocessing(document,self.stopwords,self.annotator)
+        if self.lang=='vi':
+            tokens = preprocessing_vi(document,self.stopwords,self.annotator)
+        elif self.lang=='en':
+            tokens = preprocessing_en(document, self.annotator)    
         # Calculate the position weights of the filtered words using a combination of linear and logarithmic scales
         max_position = len(tokens)
         position_weights = [ i / max_position + (1 - math.log(i + 1) / math.log(max_position)) for i, word in enumerate(tokens)]
@@ -25,38 +35,44 @@ class Extractor():
 
         # Get top keywords
         sorter = sorted(tf.items(), key=lambda x:x[1], reverse=True)
-        top_keywords = list(dict(sorter[:num_keywords]).keys())
+        top_keywords = postprocessing(list(dict(sorter).keys()))[:12]
         return top_keywords
 
 if __name__=='__main__':
     config = ConfigParser()
     config.read('config.ini')
     config_default = config['DEFAULT']
-    extractor = Extractor(config_default)
-    keywords = extractor.run("""Năm trung tâm đăng kiểm ở Hà Nội được mở cửa trở lại từ sáng 13/3 sau thời gian tạm đóng, nâng tổng số đơn vị hoạt động lên 13.
+    extractor = Extractor(config_default,'en')
+    keywords = extractor.run("""The US bank may need to raise more funds despite a $30bn rescue last week
+Edward Helmore
+Mon 20 Mar 2023 19.57 GMT
+Shares in troubled First Republic Bank crashed more than 46% on Monday, after reports the San Francisco-based bank may need to raise more funds despite a $30bn (£24bn) rescue last week.
 
-    Đó là trung tâm 2903V phường Láng Thượng, quận Cầu Giấy; 2907D ở Du Nội, Đông Anh; 2011D ở Đông Sơn, Chương Mỹ; 2917D phường Thạch Bàn, Long Biên; và 2918D ở thị xã Sơn Tây.
+As the growing banking crisis spread into a new week, the credit rating of the regional bank was downgraded deeper into junk status by S&P Global. The agency said that the bank, which caters to wealthy clients, probably faced “high liquidity stress with substantial outflows”.
 
-    Từ sáng sớm, hàng trăm phương tiện đã đến trước trung tâm 2903V xếp hàng chờ kiểm định. Ông Nguyễn Văn Bình, phố Hàng Vôi cho biết, xe ông đã hết hạn kiểm định gần một tuần phải để lại cơ quan thuộc quận Cầu Giấy, hàng ngày đi làm bằng xe máy. Sáng nay, nghe tin trung tâm 2903V mở lại nên ông vội vàng đưa xe đến xếp hàng.
+US officials are studying how to temporarily expand the protection offered to banking customers by Federal Deposit Insurance Corp (FDIC) to include all deposits, going beyond the current $250,000 cap, Bloomberg reported on Monday night.
 
-    "Tôi đã nhận được số thứ tự kiểm định trong ngày. Thật may mắn vì tôi đang đau đầu tìm nơi đăng kiểm, dự định sang các tỉnh lân cận song nghe tin chỗ nào cũng đông", ông Bình cho hay.
-    Phương tiện đổ về trung tâm 2903V ngay sau khi mở cửa sáng 13/3. Ảnh: Anh Duy
 
-    Phương tiện đổ về trung tâm 2903V đầu giờ sáng 13/3. Ảnh: Anh Duy
+Like the collapsed Silicon Valley Bank (SVB), a large proportion of First Republic’s customers hold more than the $250,000 amount guaranteed by federal insurance.
 
-    Bên trong đơn vị này, 5 đăng kiểm viên làm việc trên một dây chuyền. Hai cảnh sát giao thông hỗ trợ kiểm tra giấy tờ, số khung, số máy, kích cỡ xe và phân luồng xe vào trạm. Thời gian kiểm định 30-35 phút mỗi xe ôtô 4 chỗ. Dự kiến hôm nay trung tâm tiếp nhận khoảng 100 xe.
+However, the move may face political roadblocks. Hardline Republicans in the House of Representatives on Monday vowed to oppose any cover extension.
 
-    Để nâng công suất tiếp nhận phương tiện, ông Trần Quốc Hoan, phụ trách trung tâm đang huy động nhân lực, cố gắng mở thêm một dây chuyền kiểm định vào ngày mai. Đơn vị cũng sẽ phát phiếu hẹn theo biển số xe, có khung giờ để chủ phương tiện đến kiểm định, tránh xếp hàng gây ùn tắc ngoài trung tâm.
+The Republican House Freedom Caucus said in a statement: “Any universal guarantee on all bank deposits, whether implicit or explicit, enshrines a dangerous precedent that simply encourages future irresponsible behavior to be paid for by those not involved who followed the rules.”
 
-    Phó cục trưởng Đăng kiểm Việt Nam Nguyễn Vũ Hải cho biết, sự hỗ trợ của lực lượng cảnh sát giao thông giúp hoạt động đăng kiểm dần ổn định. Sắp tới, Bộ Quốc phòng cũng sẽ cử nhân lực giúp các trung tâm đăng kiểm trong thời gian khoảng một tháng.
-    Cảnh sát giao thông hỗ trợ đăng kiểm viên kiểm tra xe. Ảnh: Anh Duy
+First Republic’s woes follow the collapse of SVB and New York-based Signature. Over the weekend Credit Suisse became the largest institution so far to be embroiled in the upheaval when the Swiss government forced the troubled bank into a cut-price takeover by rival UBS.
 
-    Cảnh sát giao thông hỗ trợ đăng kiểm viên kiểm tra xe. Ảnh: Anh Duy
+First Republic has struggled to reassure depositors that it will not suffer the same fate as SVB and Signature. Last week, the bank increased borrowings from the US Federal Reserve and then suspended its common stock dividend despite holding about $213bn in assets and $176bn in deposits.
 
-    Chuỗi cáo buộc sai phạm của ngành đăng kiểm bắt nguồn từ giữa tháng 12/2022, khi cảnh sát giao thông TP HCM chặn một xe tải, cho rằng sai số trong dữ liệu đăng kiểm và vạch trần thủ đoạn phi pháp của các trung tâm. Khoảng 3 tháng sau đó, công an trên cả nước liên tiếp điều tra sai phạm trong hoạt động đăng kiểm, khởi tố gần 500 người của hơn 70 trung tâm về các tội: Nhận hối lộ, Môi giới hối lộ, Giả mạo trong công tác và Sản xuất, mua bán công cụ, phần mềm để sử dụng vào mục đích trái pháp luật.
+UBS and Credit Suisse logos 
+UK and US shares climb as banks and ministers aim to calm Credit Suisse fears
+Read more
+On Sunday, Reuters reported that the lender was still trying to put together a deal to raise capital, days after 11 of the biggest names in US banking, including JPMorgan Chase, Citigroup, Bank of America and Goldman Sachs kicked in $30bn.
 
-    Trong bối cảnh thiếu hụt nhân sự nghiêm trọng, lượng xe dự kiến quá hạn kiểm định tháng 3 tại Hà Nội lớn (78.640), các trung tâm đăng kiểm chỉ đáp ứng được 14% nhu cầu. Tại TP HCM, lượng xe bị quá hạn dự kiến 29.940, khả năng đáp ứng của đơn vị đăng kiểm chỉ 49% nhu cầu.
+Efforts to provide new support to First Republic are being led by the JP Morgan CEO, Jamie Dimon, the Wall Street Journal reported.
 
-    Tình trạng ùn tắc tại các đơn vị đăng kiểm những ngày qua diễn ra nghiêm trọng, nhiều chủ xe phải đợi 2-3 ngày mới đến lượt, các đăng kiểm viên đều phải làm việc tăng ca, thêm giờ.""",
+
+In a regulatory filing, the First Republic executive chairman, Jim Herbert, and the CEO, Mike Roffler, said the cash injection “is a vote of confidence for First Republic and the entire US banking system”.
+
+But First Republic’s shares have lost 80% of their value over the past 10 days on fears of a bank run. About 70% of First Republic’s deposits are uninsured, well above a 55% average for medium-sized banks, a figure that puts the bank third after SVB (94%) and Signature Bank (90%), according to Bank of America.""",
     12)
     print(keywords)

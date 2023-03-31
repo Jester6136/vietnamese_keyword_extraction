@@ -8,7 +8,7 @@ extractor = Extractor(config_default,'vi')
 
 def  extracting(document:str,num_keywords:int):
     return {"keywords": extractor.run(document,num_keywords)}
-keywords = extractor.run("""The US bank may need to raise more funds despite a $30bn rescue last week
+keywords = extracting("""The US bank may need to raise more funds despite a $30bn rescue last week
 Edward Helmore
 Mon 20 Mar 2023 19.57 GMT
 Shares in troubled First Republic Bank crashed more than 46% on Monday, after reports the San Francisco-based bank may need to raise more funds despite a $30bn (£24bn) rescue last week.

@@ -11,6 +11,8 @@ AIA Academy project
 ### Dependencies
 
 * Java 1.8+ (JRE or JDK) || You can follow this page `https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-do-I-install-Java-on-Ubuntu`
+
+
     `Notice: Setting your JAVA_HOME! export JAVA_HOME='/usr/lib/jvm/{your_java_version}'`
 * Python 3.6+
 

@@ -3,7 +3,7 @@ from src.main import Extractor
 config = ConfigParser()
 config.read('config.ini')
 config_default = config['DEFAULT']
-extractor = Extractor(config_default,'vi')
+extractor = Extractor(config_default,'en')
 
 
 def  extracting(document:str,num_keywords:int):

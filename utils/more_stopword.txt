@@ -3908,3 +3908,5 @@ Bộ
 tuần
 Tuần
 %
+USD
+Báo

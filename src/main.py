@@ -30,7 +30,9 @@ class Extractor():
         tf = {}
         for i,token in enumerate(tokens):
             if token[0].isupper():
-                weight = 1.8  # Assign a weight of 1.8 to uppercase tokens
+                weight = 2  # Assign a weight of 2 to uppercase tokens
+            elif "_" in token:
+                weight +=0.6
             else:
                 weight = 1  # Assign a weight of 1 to lowercase tokens
             tf[token] = tf.get(token, 0) + weight * position_weights[i]

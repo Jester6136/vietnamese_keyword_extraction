@@ -3,41 +3,40 @@ from src.main import Extractor
 config = ConfigParser()
 config.read('config.ini')
 config_default = config['DEFAULT']
-extractor = Extractor(config_default,'en')
+extractor = Extractor(config_default,'vi')
 
 
 def  extracting(document:str,num_keywords:int):
     return {"keywords": extractor.run(document,num_keywords)}
-keywords = extracting("""The US bank may need to raise more funds despite a $30bn rescue last week
-Edward Helmore
-Mon 20 Mar 2023 19.57 GMT
-Shares in troubled First Republic Bank crashed more than 46% on Monday, after reports the San Francisco-based bank may need to raise more funds despite a $30bn (£24bn) rescue last week.
-
-As the growing banking crisis spread into a new week, the credit rating of the regional bank was downgraded deeper into junk status by S&P Global. The agency said that the bank, which caters to wealthy clients, probably faced “high liquidity stress with substantial outflows”.
-
-US officials are studying how to temporarily expand the protection offered to banking customers by Federal Deposit Insurance Corp (FDIC) to include all deposits, going beyond the current $250,000 cap, Bloomberg reported on Monday night.
+keywords = extracting("""
 
 
-Like the collapsed Silicon Valley Bank (SVB), a large proportion of First Republic’s customers hold more than the $250,000 amount guaranteed by federal insurance.
+(Dân trí) - Máy bay ném bom chiến lược B-52 của Mỹ phóng thành công một tên lửa siêu vượt âm trong cuộc thử nghiệm quan trọng với Không quân nước này, sau một số lần bắn thử không thành công trước đó.
+Pháo đài bay Mỹ lần đầu phóng thành công tên lửa siêu vượt âm hoàn chỉnh - 1
+Máy bay ném bom chiến lược B-52H (Ảnh: Không quân Mỹ)
 
-However, the move may face political roadblocks. Hardline Republicans in the House of Representatives on Monday vowed to oppose any cover extension.
+Không quân Mỹ ngày 12/12 thông báo, một máy bay B-52H của nước này đã phóng một tên lửa siêu vượt âm hoàn chỉnh. Đây là lần đầu tiên một máy bay ném bom Mỹ phóng ra nguyên mẫu tên lửa AGM-183A có đủ các tính năng sau một số vụ thử không thành công và trong bối cảnh Washington nhiều lần thừa nhận đang bị chậm chân so với đối thủ Nga - Trung Quốc trong cuộc đua vũ khí siêu vượt âm.
 
-The Republican House Freedom Caucus said in a statement: “Any universal guarantee on all bank deposits, whether implicit or explicit, enshrines a dangerous precedent that simply encourages future irresponsible behavior to be paid for by those not involved who followed the rules.”
+Theo thông báo, B-52H đã phóng Vũ khí phản ứng nhanh phóng từ trên không (ARRW) AGM-183A khi bay ở khu vực duyên hải California hôm 9/12.
 
-First Republic’s woes follow the collapse of SVB and New York-based Signature. Over the weekend Credit Suisse became the largest institution so far to be embroiled in the upheaval when the Swiss government forced the troubled bank into a cut-price takeover by rival UBS.
+Sau khi quả tên lửa rời khỏi B-52, nó đạt tốc độ nhanh gấp 5 lần tốc độ âm thanh - một điều kiện để vũ khí được xem là siêu vượt âm. Tên lửa đã hoàn thành đúng đường bay và phát nổ ở khu vực mục tiêu.
 
-First Republic has struggled to reassure depositors that it will not suffer the same fate as SVB and Signature. Last week, the bank increased borrowings from the US Federal Reserve and then suspended its common stock dividend despite holding about $213bn in assets and $176bn in deposits.
+Pháo đài bay Mỹ lần đầu phóng thành công tên lửa siêu vượt âm hoàn chỉnh - 2
+Cận cảnh tên lửa AGM-183A (Ảnh: Quân đội Mỹ).
 
-UBS and Credit Suisse logos 
-UK and US shares climb as banks and ministers aim to calm Credit Suisse fears
-Read more
-On Sunday, Reuters reported that the lender was still trying to put together a deal to raise capital, days after 11 of the biggest names in US banking, including JPMorgan Chase, Citigroup, Bank of America and Goldman Sachs kicked in $30bn.
+"Đội ngũ phát triển ARRW đã thiết kế và thử nghiệm thành công tên lửa siêu vượt âm phóng từ trên không trong 5 năm. Tôi vô cùng tự hào về sự kiên trì và cống hiến mà nhóm này đã thể hiện để mang lại một năng lực quan trọng cho quân đội chúng ta", Chuẩn tướng Jason Bartolomei, giám đốc điều hành Chương trình Vũ khí, cho biết trong tuyên bố.
 
-Efforts to provide new support to First Republic are being led by the JP Morgan CEO, Jamie Dimon, the Wall Street Journal reported.
+Nhà sản xuất vũ khí Lockheed Martin cho biết "thử nghiệm mới nhất này cho thấy thiết kế của ARRW và thể hiện khả năng của nó ở tốc độ siêu vượt âm".
 
+ARRW là vũ khí siêu vượt âm thông thường độc lập có thể được phóng từ máy bay ném bom B-52 và "được thiết kế để tấn công mặt đất có giá trị cao".
 
-In a regulatory filing, the First Republic executive chairman, Jim Herbert, and the CEO, Mike Roffler, said the cash injection “is a vote of confidence for First Republic and the entire US banking system”.
+ARRW đã trải qua 3 lần thử nghiệm thất bại vào năm 2021 do các sự cố trong quá trình phóng tên lửa, nhưng nó đã có 2 lần thử nghiệm thành công trong năm nay.
 
-But First Republic’s shares have lost 80% of their value over the past 10 days on fears of a bank run. About 70% of First Republic’s deposits are uninsured, well above a 55% average for medium-sized banks, a figure that puts the bank third after SVB (94%) and Signature Bank (90%), according to Bank of America.""",
+Không giống tên lửa đạn đạo di chuyển theo quỹ đạo parabol đã định, vũ khí siêu vượt âm có khả năng cơ động cao hơn và tạo ra những thách thức lớn hơn đối với hệ thống phòng không truyền thống.
+
+Trong vài năm qua, Mỹ nhiều lần thừa nhận bị chậm hơn Nga và Trung Quốc trong cuộc đua chế tạo dòng vũ khí có thể bay nhanh gấp ít nhất 5 lần tốc độ âm thanh (6.174 km/h).
+
+Nga hiện đã đưa vào biên chế dòng tên lửa Kinzhal (nhanh gấp 10 lần tốc độ âm thanh) hay Avangard (nhanh gấp 27 lần tốc độ âm thanh), trong khi Trung Quốc cũng đã triển khai tên lửa siêu vượt âm. Mặt khác, Mỹ vẫn đang trong giai đoạn phát triển vũ khí này.
+""",
     12)
 print(keywords)

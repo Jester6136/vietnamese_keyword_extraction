@@ -28,14 +28,26 @@ class Extractor():
         position_weights = [ i / max_position + (1 - math.log(i + 1) / math.log(max_position)) for i, word in enumerate(tokens)]
 
         tf = {}
+
         for i,token in enumerate(tokens):
             if token[0].isupper():
                 weight = 2  # Assign a weight of 2 to uppercase tokens
-            elif "_" in token:
-                weight +=0.6
             else:
                 weight = 1  # Assign a weight of 1 to lowercase tokens
+                if "_" not in token:
+                    weight-=0.5
+            if "_" in token:
+                weight +=0.8
             tf[token] = tf.get(token, 0) + weight * position_weights[i]
+
+        # for i,token in enumerate(tokens):
+        #     if token[0].isupper():
+        #         weight = 2  # Assign a weight of 2 to uppercase tokens
+        #     elif "_" in token:
+        #         weight +=1
+        #     else:
+        #         weight = 1  # Assign a weight of 1 to lowercase tokens
+        #     tf[token] = tf.get(token, 0) + weight * position_weights[i]
 
         # Get top keywords
         sorter = sorted(tf.items(), key=lambda x:x[1], reverse=True)

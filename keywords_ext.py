@@ -9,34 +9,42 @@ extractor = Extractor(config_default,'vi')
 def  extracting(document:str,num_keywords:int):
     return {"keywords": extractor.run(document,num_keywords)}
 keywords = extracting("""
+So với U23 Malaysia, U23 Việt Nam được đánh giá cao hơn, nhưng đội bóng của HLV Hoàng Anh Tuấn không thể xem thường đối thủ có lối đá đầy khó chịu.
+*Trận đấu giữa U23 Việt Nam và U23 Malaysia sẽ diễn ra lúc 16h00 ngày 24/8, trên sân vận động tỉnh Rayong (Thái Lan), Dân trí sẽ tường thuật trực tuyến trận đấu này.
+
+Thật ra việc U23 Việt Nam được đánh giá cao hơn so với U23 Malaysia cũng chỉ là về lý thuyết, xuất phát từ chỗ đội hình của chúng ta khá ổn định, với nòng cốt gồm các cầu thủ từng có mặt tại SEA Games 32.
+
+Còn trên thực tế, đội nào mạnh hơn đội nào ở giải đấu năm nay còn phải chờ trận quyết đấu sắp diễn ra. U23 Malaysia hiện có lợi thế rất lớn về mặt tinh thần, ở chỗ đội bóng của HLV Elavarasan đã đánh bại đại kình địch U23 Indonesia ở vòng bảng.
+
+U23 Việt Nam - U23 Malaysia (16h ngày 24/8): Thẳng tiến vào chung kết? - 1
+U23 Việt Nam sẽ vào chung kết? (Ảnh: Minh Quân).
 
 
-(Dân trí) - Máy bay ném bom chiến lược B-52 của Mỹ phóng thành công một tên lửa siêu vượt âm trong cuộc thử nghiệm quan trọng với Không quân nước này, sau một số lần bắn thử không thành công trước đó.
-Pháo đài bay Mỹ lần đầu phóng thành công tên lửa siêu vượt âm hoàn chỉnh - 1
-Máy bay ném bom chiến lược B-52H (Ảnh: Không quân Mỹ)
+Mỗi khi các đại diện của bóng đá Malaysia đánh bại các đại diện của bóng đá Indonesia, họ luôn có thêm sự tự tin.
 
-Không quân Mỹ ngày 12/12 thông báo, một máy bay B-52H của nước này đã phóng một tên lửa siêu vượt âm hoàn chỉnh. Đây là lần đầu tiên một máy bay ném bom Mỹ phóng ra nguyên mẫu tên lửa AGM-183A có đủ các tính năng sau một số vụ thử không thành công và trong bối cảnh Washington nhiều lần thừa nhận đang bị chậm chân so với đối thủ Nga - Trung Quốc trong cuộc đua vũ khí siêu vượt âm.
+Đấy là chưa kể U23 Malaysia có một vài sự bổ sung quan trọng ở giải U23 Đông Nam Á so với SEA Games 32. Nổi bật nhất trong số này là tiền vệ sinh ra tại Scotland Fergus Tierney, người ghi cả hai bàn thắng cho U23 Malaysia vào lưới Indonesia ở vòng bảng.
 
-Theo thông báo, B-52H đã phóng Vũ khí phản ứng nhanh phóng từ trên không (ARRW) AGM-183A khi bay ở khu vực duyên hải California hôm 9/12.
+Ngoài ra, HLV Elavarasan của U23 Malaysia là người tinh quái, ông có nhiều chiêu bài khác nhau để đối thủ lộ ra các nhược điểm, trước khi U23 Malaysia khai thác vào các nhược điểm đấy.
 
-Sau khi quả tên lửa rời khỏi B-52, nó đạt tốc độ nhanh gấp 5 lần tốc độ âm thanh - một điều kiện để vũ khí được xem là siêu vượt âm. Tên lửa đã hoàn thành đúng đường bay và phát nổ ở khu vực mục tiêu.
+Không phải ngẫu nhiên mà HLV Elavarasan đánh giá rất cao người đồng nghiệp Hoàng Anh Tuấn bên phía U23 Việt Nam.
 
-Pháo đài bay Mỹ lần đầu phóng thành công tên lửa siêu vượt âm hoàn chỉnh - 2
-Cận cảnh tên lửa AGM-183A (Ảnh: Quân đội Mỹ).
+U23 Việt Nam - U23 Malaysia (16h ngày 24/8): Thẳng tiến vào chung kết? - 2
+U23 Malaysia không hề yếu (Ảnh: FAM).
 
-"Đội ngũ phát triển ARRW đã thiết kế và thử nghiệm thành công tên lửa siêu vượt âm phóng từ trên không trong 5 năm. Tôi vô cùng tự hào về sự kiên trì và cống hiến mà nhóm này đã thể hiện để mang lại một năng lực quan trọng cho quân đội chúng ta", Chuẩn tướng Jason Bartolomei, giám đốc điều hành Chương trình Vũ khí, cho biết trong tuyên bố.
+HLV Hoàng Anh Tuấn là người giỏi đọc trận đấu, có nhiều kinh nghiệm cầm quân kể cả ở các giải đấu trẻ lẫn sân chơi đỉnh cao (ông Tuấn từng dẫn dắt các đội Khánh Hòa và Hải Phòng tại V-League). HLV Hoàng Anh Tuấn sẽ biết cách kiềm chế các cầu thủ của mình, tránh cho họ không sa vào những đòn khiêu khích của Malaysia.
 
-Nhà sản xuất vũ khí Lockheed Martin cho biết "thử nghiệm mới nhất này cho thấy thiết kế của ARRW và thể hiện khả năng của nó ở tốc độ siêu vượt âm".
+Đấy cũng là lý do mà ông Tuấn phản ứng khá mạnh trước những pha gây hấn liên tục của Nguyễn Văn Trường với cầu thủ Philippines hôm 22/8. Nếu những tình huống gây hấn này rơi vào trận bán kết với U23 Malaysia, cầu thủ Việt Nam có thể bị đối thủ khiêu khích rồi rơi vào thế bất lợi.
 
-ARRW là vũ khí siêu vượt âm thông thường độc lập có thể được phóng từ máy bay ném bom B-52 và "được thiết kế để tấn công mặt đất có giá trị cao".
+Nhược điểm khác của U23 Việt Nam chính là vị trí của thủ môn Quan Văn Chuẩn. Dù là cựu binh, đeo băng đội trưởng của U23 Việt Nam, dù có kinh nghiệm ở giải U23 Đông Nam Á năm ngoái và SEA Games 32 năm nay, nhưng Quan Văn Chuẩn thi đấu không hề an toàn.
 
-ARRW đã trải qua 3 lần thử nghiệm thất bại vào năm 2021 do các sự cố trong quá trình phóng tên lửa, nhưng nó đã có 2 lần thử nghiệm thành công trong năm nay.
+Thủ thành này bắt bóng bổng rất kém. Những pha phán đoán điểm rơi không chính xác của Quan Văn Chuẩn thường xuyên lặp đi lặp lại, chứng tỏ có thể đây không phải là vấn đề kinh nghiệm hay tâm lý, mà xuất phát từ chính khâu chuyên môn của thủ thành Quan Văn Chuẩn: Năng lực khống chế bóng bổng hạn chế.
 
-Không giống tên lửa đạn đạo di chuyển theo quỹ đạo parabol đã định, vũ khí siêu vượt âm có khả năng cơ động cao hơn và tạo ra những thách thức lớn hơn đối với hệ thống phòng không truyền thống.
+Không loại trừ khả năng HLV Hoàng Anh Tuấn sẽ sử dụng thủ môn khác cho trận bán kết với Malaysia, để đảm bảo an toàn cho hàng thủ.
 
-Trong vài năm qua, Mỹ nhiều lần thừa nhận bị chậm hơn Nga và Trung Quốc trong cuộc đua chế tạo dòng vũ khí có thể bay nhanh gấp ít nhất 5 lần tốc độ âm thanh (6.174 km/h).
+Trận đấu với U23 Malaysia là trận đấu có tính chất khác so với 2 trận vòng bảng. Nhưng như HLV Hoàng Anh Tuấn cho biết, điều quan trọng trong trận đấu này là U23 Việt Nam phát huy tối đa phong độ và năng lực của mình, chúng ta sẽ có chiến thắng.
 
-Nga hiện đã đưa vào biên chế dòng tên lửa Kinzhal (nhanh gấp 10 lần tốc độ âm thanh) hay Avangard (nhanh gấp 27 lần tốc độ âm thanh), trong khi Trung Quốc cũng đã triển khai tên lửa siêu vượt âm. Mặt khác, Mỹ vẫn đang trong giai đoạn phát triển vũ khí này.
+Dự đoán: U23 Việt Nam thắng 2-1
+
 """,
-    12)
+    10)
 print(keywords)

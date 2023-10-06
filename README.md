@@ -28,5 +28,5 @@ AIA Academy project
 
 * To run demo the program:
 
-    `$ python src/main.py`
+    `$ python keywords_ext.py`
 

@@ -4,7 +4,7 @@ Keywords for extracting newpaper
 
 ## Description
 
-AIA Academy project
+A rule-based keyword extractor
 
 ## Getting Started
 
